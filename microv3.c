@@ -6,7 +6,7 @@
 /*   By: bterral <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:23:46 by bterral           #+#    #+#             */
-/*   Updated: 2022/06/20 19:05:04 by bterral          ###   ########lyon.fr   */
+/*   Updated: 2022/06/23 16:21:11 by bterral          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,17 @@ void	ft_exit(char *str1, char *str2)
 	if (str2)
 		write(2, str2, ft_strlen(str2));
 	write(2, "\n", 1);
-	exit(1);
 }
 
 void	ft_cd(char **av)
 {
 	if (!av[1] || av[2])
 		ft_exit("error: cd: bad arguments", NULL);
-	if (chdir(av[1]))
-		ft_exit("error: cd: cannot change directory to ", av[1]);
+	else
+	{
+		if (chdir(av[1]))
+			ft_exit("error: cd: cannot change directory to ", av[1]);
+	}
 }
 
 int	ft_exec(char **av, int pipe_fd[2], int *fd, char **env)
