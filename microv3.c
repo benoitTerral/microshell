@@ -6,7 +6,7 @@
 /*   By: bterral <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:23:46 by bterral           #+#    #+#             */
-/*   Updated: 2022/06/23 16:21:11 by bterral          ###   ########lyon.fr   */
+/*   Updated: 2022/06/23 17:02:59 by bterral          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_exec(char **av, int pipe_fd[2], int *fd, char **env)
 		if (!last)
 			dup2(pipe_fd[1], STDOUT_FILENO);
 		if (execve(av[0], &av[0], env) == -1)
-			ft_exit("error: fatal", NULL);
+			ft_exit("error: cannot execute ", av[0]);
 	}
 	else
 	{
